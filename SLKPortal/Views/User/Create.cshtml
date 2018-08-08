@@ -1,0 +1,450 @@
+﻿@model SLKPortal.Models.detail
+
+@{
+
+    ViewBag.Title = "RegistrationPage";
+
+}
+
+
+
+@using (Html.BeginForm())
+
+{
+
+    @Html.AntiForgeryToken()
+
+    <h2>Registration Page</h2>
+
+    <hr />
+
+    <table>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.FirstName) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(model => model.FirstName)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.FirstName, "")
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.MiddleName) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(model => model.MiddleName)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.MiddleName, "")
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.LastName) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(model => model.LastName)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.LastName, "")
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.PhoneNumber) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(model => model.PhoneNumber)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "")
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.Gender) :
+
+            </td>
+
+            <td>
+
+                @Html.RadioButtonFor(m => m.Gender, "M", false)@Html.Label("Male")
+
+                @Html.RadioButtonFor(m => m.Gender, "F", false)@Html.Label("Female")
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.Gender)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.DateOfBirth) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.DateOfBirth)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.DateOfBirth)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.EmailID) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.EmailID)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.EmailID)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.Address) :
+
+            </td>
+
+            <td>
+
+                @Html.TextAreaFor(m => m.Address)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.Address)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.City) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.City)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.City)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.ZipCode) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.ZipCode)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.ZipCode)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.State) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.State)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.State)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.Country) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.Country)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.Country)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.Department) :
+
+            </td>
+
+            <td>
+
+                @*@Html.DropDownListFor(m => m.Department,
+
+                    new SelectList(Enum.GetValues(typeof(Rits.Models.Department))),
+
+                    "Select Department")*@
+
+                @Html.DropDownList("Department", new List<SelectListItem>
+
+                        {
+
+                           new SelectListItem{Text="Computer Science",Value="Computer Science"},
+
+                           new SelectListItem{Text="Information Science",Value="Information Science"},
+
+                           new SelectListItem{Text="Electronics",Value="Electronics & Electricals"},
+
+                           new SelectListItem{Text="Civil",Value="Civil"},
+
+                           new SelectListItem{Text="Mechanical",Value="Mechanical"},
+
+                           new SelectListItem{Text="Intrumental",Value="Instrumental"}
+
+                        }, "Select One")
+
+
+
+
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.Department)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.TenthBoard) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.TenthBoard)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.TenthBoard)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.TenthMarks) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.TenthMarks)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.TenthMarks)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.TwelfthBoard) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.TwelfthBoard)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.TwelfthBoard)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.TwelfthMarks) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.TwelfthMarks)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.TwelfthMarks)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td></td>
+
+            <td>
+
+                <input type="submit" value="Done" />
+
+                <input type="button" value="Cancel" name="Cancel" />
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    @*<div style="border: 1px solid double;color:red" >
+
+            @ViewBag.Message
+
+        </div>*@
+
+}
+
+    
+

@@ -1,0 +1,101 @@
+﻿
+@model SLKPortal.Models.registration
+
+@{
+
+    ViewBag.Title = "Login";
+
+}
+
+
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+
+{
+
+    @Html.AntiForgeryToken()
+
+    <table>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.EmailId)
+
+            </td>
+
+            <td>
+
+                @Html.TextBoxFor(m => m.EmailId, new { id = "EmailId" })
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.EmailId)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.Password)
+
+            </td>
+
+            <td>
+
+                @Html.TextBoxFor(m => m.Password, new { id = "EmailId" })
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.Password)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td></td>
+
+            <td>
+
+                <input type="submit" value="Ok" />
+
+                <input type="button" name="Cancel" value="Cancel" />
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    if (@ViewBag.Message != null)
+
+    {
+
+        <div style="border: 1px solid double;color:red">
+
+            @ViewBag.Message
+
+        </div>
+
+    }
+
+    <p>Not a member yet?</p>
+
+        @Html.ActionLink("Sign-Up", "SignUp")
+
+}
+
+
+

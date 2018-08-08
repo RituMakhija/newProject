@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SLKDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="detail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="20" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="DateOfBirth" Type="varchar" MaxLength="15" />
+          <Property Name="EmailID" Type="varchar" MaxLength="40" />
+          <Property Name="Address" Type="varchar" MaxLength="60" />
+          <Property Name="City" Type="varchar" MaxLength="30" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="State" Type="varchar" MaxLength="30" />
+          <Property Name="Country" Type="varchar" MaxLength="40" />
+          <Property Name="Department" Type="varchar" MaxLength="30" />
+          <Property Name="TenthBoard" Type="varchar" MaxLength="30" />
+          <Property Name="TenthMarks" Type="int" />
+          <Property Name="TwelfthBoard" Type="varchar" MaxLength="30" />
+          <Property Name="TwelfthMarks" Type="int" />
+        </EntityType>
+        <EntityType Name="registration">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="SlNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="EmailId" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__detail__EmailID__08B54D69">
+          <End Role="registration" Type="Self.registration" Multiplicity="0..1" />
+          <End Role="detail" Type="Self.detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registration">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="detail">
+              <PropertyRef Name="EmailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SLKDatabaseModelStoreContainer">
+          <EntitySet Name="detail" EntityType="Self.detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registration" EntityType="Self.registration" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__detail__EmailID__08B54D69" Association="Self.FK__detail__EmailID__08B54D69">
+            <End Role="registration" EntitySet="registration" />
+            <End Role="detail" EntitySet="detail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SLKDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="detail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenthBoard" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TenthMarks" Type="Int32" />
+          <Property Name="TwelfthBoard" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TwelfthMarks" Type="Int32" />
+          <NavigationProperty Name="registration" Relationship="Self.FK__detail__EmailID__08B54D69" FromRole="detail" ToRole="registration" />
+        </EntityType>
+        <EntityType Name="registration">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="SlNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="details" Relationship="Self.FK__detail__EmailID__08B54D69" FromRole="registration" ToRole="detail" />
+        </EntityType>
+        <Association Name="FK__detail__EmailID__08B54D69">
+          <End Role="registration" Type="Self.registration" Multiplicity="0..1" />
+          <End Role="detail" Type="Self.detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registration">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="detail">
+              <PropertyRef Name="EmailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SLKDataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="details" EntityType="Self.detail" />
+          <EntitySet Name="registrations" EntityType="Self.registration" />
+          <AssociationSet Name="FK__detail__EmailID__08B54D69" Association="Self.FK__detail__EmailID__08B54D69">
+            <End Role="registration" EntitySet="registrations" />
+            <End Role="detail" EntitySet="details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SLKDatabaseModelStoreContainer" CdmEntityContainer="SLKDataBaseEntities">
+          <EntitySetMapping Name="details">
+            <EntityTypeMapping TypeName="SLKDatabaseModel.detail">
+              <MappingFragment StoreEntitySet="detail">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="TenthBoard" ColumnName="TenthBoard" />
+                <ScalarProperty Name="TenthMarks" ColumnName="TenthMarks" />
+                <ScalarProperty Name="TwelfthBoard" ColumnName="TwelfthBoard" />
+                <ScalarProperty Name="TwelfthMarks" ColumnName="TwelfthMarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registrations">
+            <EntityTypeMapping TypeName="SLKDatabaseModel.registration">
+              <MappingFragment StoreEntitySet="registration">
+                <ScalarProperty Name="SlNo" ColumnName="SlNo" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,127 @@
+﻿@model SLKPortal.Models.registration
+
+@{
+
+    ViewBag.Title = "RegistrationPage";
+
+}
+
+
+
+@using (Html.BeginForm())
+
+{
+
+    @Html.AntiForgeryToken()
+
+    <h2>Registration Page</h2>
+
+    <hr />
+
+    <table>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.UserName) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(model => model.UserName)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.UserName, "")
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.EmailId) :
+
+            </td>
+
+            <td>
+
+                @Html.EditorFor(m => m.EmailId)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.EmailId)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.Password) :
+
+            </td>
+
+            <td>
+
+                @Html.TextAreaFor(m => m.Password)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.Password)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                @Html.LabelFor(m => m.ConfirmPassword) :
+
+            </td>
+
+            <td>
+
+                @Html.TextAreaFor(m => m.ConfirmPassword)
+
+            </td>
+
+            <td>
+
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td></td>
+
+            <td>
+
+                <input type="submit" value="Done" />
+
+                <input type="button" value="Cancel" name="Cancel" />
+
+            </td>
+
+        </tr>
+
+    </table>
+
+}

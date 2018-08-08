@@ -1,0 +1,130 @@
+﻿@model SLKPortal.Models.registration
+
+@{
+
+    ViewBag.Title = "SignUp";
+
+}
+
+
+
+@using (Html.BeginForm())
+
+{
+
+    @Html.AntiForgeryToken()
+
+    <h2>Registration</h2>
+
+            <hr />
+
+            <table>
+
+                <tr>
+
+                    <td>
+
+                        @Html.LabelFor(m => m.UserName) :
+
+                    </td>
+
+                    <td>
+
+                        @Html.EditorFor(model => model.UserName)
+
+                    </td>
+
+                    <td>
+
+                        @Html.ValidationMessageFor(m => m.UserName, "")
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        @Html.LabelFor(m => m.EmailId) :
+
+                    </td>
+
+                    <td>
+
+                        @Html.EditorFor(model => model.EmailId)
+
+                    </td>
+
+                    <td>
+
+                        @Html.ValidationMessageFor(m => m.EmailId, "")
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        @Html.LabelFor(m => m.Password) :
+
+                    </td>
+
+                    <td>
+
+                        @Html.EditorFor(m => m.Password)
+
+                    </td>
+
+                    <td>
+
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        @Html.LabelFor(m => m.ConfirmPassword) :
+
+                    </td>
+
+                    <td>
+
+                        @Html.EditorFor(m => m.ConfirmPassword)
+
+                    </td>
+
+                    <td>
+
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td></td>
+
+                    <td>
+
+                        <input type="submit" value="Register" />
+
+                        <input type="button" value="Cancel" name="Cancel" onclick="window.location.href = '@Url.Action("HomePage", "User")';" />
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+            <p>Already have a account?</p>
+
+            @Html.ActionLink("Login", "Login")
+}

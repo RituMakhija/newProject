@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SLKDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="detail">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="20" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="20" />
+    <Property Name="LastName" Type="varchar" MaxLength="20" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="DateOfBirth" Type="varchar" MaxLength="15" />
+    <Property Name="EmailID" Type="varchar" MaxLength="40" />
+    <Property Name="Address" Type="varchar" MaxLength="60" />
+    <Property Name="City" Type="varchar" MaxLength="30" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+    <Property Name="State" Type="varchar" MaxLength="30" />
+    <Property Name="Country" Type="varchar" MaxLength="40" />
+    <Property Name="Department" Type="varchar" MaxLength="30" />
+    <Property Name="TenthBoard" Type="varchar" MaxLength="30" />
+    <Property Name="TenthMarks" Type="int" />
+    <Property Name="TwelfthBoard" Type="varchar" MaxLength="30" />
+    <Property Name="TwelfthMarks" Type="int" />
+  </EntityType>
+  <EntityType Name="registration">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="SlNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="EmailId" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="ConfirmPassword" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__detail__EmailID__08B54D69">
+    <End Role="registration" Type="Self.registration" Multiplicity="0..1" />
+    <End Role="detail" Type="Self.detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registration">
+        <PropertyRef Name="EmailId" />
+      </Principal>
+      <Dependent Role="detail">
+        <PropertyRef Name="EmailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SLKDatabaseModelStoreContainer">
+    <EntitySet Name="detail" EntityType="Self.detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="registration" EntityType="Self.registration" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__detail__EmailID__08B54D69" Association="Self.FK__detail__EmailID__08B54D69">
+      <End Role="registration" EntitySet="registration" />
+      <End Role="detail" EntitySet="detail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

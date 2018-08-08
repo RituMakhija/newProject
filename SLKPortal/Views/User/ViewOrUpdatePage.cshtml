@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ViewOrUpdatePage";
+}
+
+<h2>ViewOrUpdatePage</h2>
+
+@*@model IEnumerable<SLKPortal.Models.detail>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Person Detail</h2>
+@{
+    WebGrid grid = new WebGrid(Model, selectionFieldName: "SelectedRow");
+    @grid.GetHtml(
+        columns: grid.Columns(
+            grid.Column("Select", header: null, format: @<text>@item.GetSelectLink("Select")</text>),
+            grid.Column("Firstname", format: @<text>@item.FirstName</text>),
+            grid.Column("LastName", format: @<text>@item.LastName</text>),
+            grid.Column("Contact", format: @<text>@item.Contact</text>),
+                grid.Column("UserId", "User ID"),
+
+                grid.Column("FirstName", "First Name"),
+
+                grid.Column("MiddleName", "Middle Name"),
+
+                grid.Column("LastName", "Last Name"),
+
+                grid.Column("PhoneNumber", "Phone Number"),
+
+                grid.Column("Gender", "Gender"),
+
+                grid.Column("DateOfBirth", "Date Of Birth"),
+
+                grid.Column("EmailID", "EmailID"),
+
+                grid.Column("Address", "Address"),
+
+                grid.Column("City", "City"),
+
+                grid.Column("ZipCode", "ZipCode"),
+
+                grid.Column("State", "State"),
+
+                grid.Column("Country", "Country"),
+
+                grid.Column("Department", "Department"),
+
+                grid.Column("TenthBoard", "Tenth Board"),
+
+                grid.Column("TenthMarks", "Tenth Marks"),
+
+                grid.Column("TwelfthBoard", "Twelfth Board"),
+
+                grid.Column("TwelfthMarks", "Twelfth Marks")
+        )
+    )
+}
+@if (grid.HasSelection)
+{
+    @RenderPage("ViewOrUpdatePage", new { PersonModel = grid.SelectedRow })
+}*@
